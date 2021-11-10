@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Decentralized File Storage",
   "author": "miqueltrallero.c@gmail.com",
-  "homepage": ".",
+  "homepage": "/dashboard",
   "engines": {
     "node": "14.17.3"
   },

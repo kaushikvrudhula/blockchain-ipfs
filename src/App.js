@@ -5,7 +5,7 @@ import getDStorage from './instances/contracts';
 import Navbar from './components/Layout/Navbar';
 import Main from './components/Content/Main'
 import box from './img/box.png';
-import { BrowserRouter,Routes,Route} from 'react-router-dom';
+import { BrowserRouter,Routes,Route,Redirect} from 'react-router-dom';
 
 const ipfsClient = require('ipfs-http-client');
 const ipfs = ipfsClient.create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
