@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Dashboard } from './pages/Dashboard';
+import { Dashboard } from './components/Dashboard';
 import web3 from './instances/connection';
 import getDStorage from './instances/contracts';
 import Navbar from './components/Layout/Navbar';
+import SignUp from './components/SignUp';
+import Profile from './components/Profile';
+import Login from './components/Login';
 import Main from './components/Content/Main'
 import box from './img/box.png';
-import { BrowserRouter,Routes,Route,Redirect} from 'react-router-dom';
+import { BrowserRouter,Routes,Route} from 'react-router-dom';
 
 const ipfsClient = require('ipfs-http-client');
 const ipfs = ipfsClient.create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
@@ -134,7 +137,7 @@ const App = () => {
 
   const showContent = web3 && account && dstorage;
 
-  return (    
+  return (    <div>
     <BrowserRouter>
     <Routes>
     <React.Fragment> 
@@ -144,8 +147,12 @@ const App = () => {
       {showContent && <Main files={files} captureFile={captureFile} uploadFile={uploadFile} isLoading={isLoading} />}</>
     }/>
     </React.Fragment>
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/login' element={<Login />} />
     </Routes>
     </BrowserRouter>
+    </div>
   );
 };
 
