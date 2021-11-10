@@ -6,12 +6,16 @@ import Navbar from './components/Layout/Navbar';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Login from './components/Login';
-import Main from './components/Content/Main'
+import Main from './components/Content/Main';
 import box from './img/box.png';
-import { BrowserRouter,Routes,Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const ipfsClient = require('ipfs-http-client');
-const ipfs = ipfsClient.create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+const ipfs = ipfsClient.create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+});
 
 const App = () => {
   const [dstorage, setDstorage] = useState(null);
@@ -25,39 +29,41 @@ const App = () => {
 
   useEffect(() => {
     // Check if the user has Metamask active
-    if(!web3) {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    if (!web3) {
+      window.alert(
+        'Non-Ethereum browser detected. You should consider trying MetaMask!'
+      );
       return;
     }
-    
+
     // Function to fetch all the blockchain data
-    const loadBlockchainData = async() => {
+    const loadBlockchainData = async () => {
       // Request accounts acccess if needed
       try {
-        await window.ethereum.request({ method: 'eth_requestAccounts' });  
-      } catch(error) {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+      } catch (error) {
         console.error(error);
       }
-      
+
       // Load account
-      const accounts = await web3.eth.getAccounts();       
+      const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
 
       // Network ID
-      const networkId = await web3.eth.net.getId()
+      const networkId = await web3.eth.net.getId();
       setNetworkId(networkId);
 
       // Contract
       const contract = getDStorage(networkId);
-      if(contract) {
+      if (contract) {
         // Set contract in state
-        setDstorage(contract);        
+        setDstorage(contract);
         // Get files amount
         const filesCount = await contract.methods.fileCount().call();
         // Load files&sort by the newest
         for (let i = filesCount; i >= 1; i--) {
           const file = await contract.methods.files(i).call();
-          setFiles(prevState => {
+          setFiles((prevState) => {
             return [...prevState, file];
           });
         }
@@ -65,24 +71,25 @@ const App = () => {
         setIsLoading(false);
 
         // Event subscription to File Uploaded
-        contract.events.FileUploaded()    
-        .on('data', (event) => {
-          const file = event.returnValues;
-          setFiles(prevState => {
-            return [file, ...prevState];
+        contract.events
+          .FileUploaded()
+          .on('data', (event) => {
+            const file = event.returnValues;
+            setFiles((prevState) => {
+              return [file, ...prevState];
+            });
+            setIsLoading(false);
           })
-          setIsLoading(false);
-        })
-        .on('error', (error) => {
-          console.log(error);
-        });        
+          .on('error', (error) => {
+            console.log(error);
+          });
       } else {
-        window.alert('DStorage contract not deployed to detected network.')
+        window.alert('DStorage contract not deployed to detected network.');
       }
     };
-    
+
     loadBlockchainData();
-    
+
     // Metamask Event Subscription - Account changed
     window.ethereum.on('accountsChanged', (accounts) => {
       setAccount(accounts[0]);
@@ -95,7 +102,7 @@ const App = () => {
   }, []);
 
   // Get file from user
-  const captureFile = event => {
+  const captureFile = (event) => {
     event.preventDefault();
 
     const file = event.target.files[0];
@@ -105,53 +112,87 @@ const App = () => {
     reader.onloadend = () => {
       setCapturedFileBuffer(Buffer(reader.result));
       setCapturedFileType(file.type);
-      setCapturedFileName(file.name);      
-    }      
+      setCapturedFileName(file.name);
+    };
   };
 
   // Upload file to IPFS and push to the blockchain
-  const uploadFile = async(description) => {
+  const uploadFile = async (description) => {
     // Add file to the IPFS
     const fileAdded = await ipfs.add(capturedFileBuffer);
-    if(!fileAdded) {
+    if (!fileAdded) {
       console.error('Something went wrong when updloading the file');
       return;
     }
 
     // Assign value for the file without extension
-    if(capturedFileType === ''){
+    if (capturedFileType === '') {
       setCapturedFileType('none');
     }
 
-    dstorage.methods.uploadFile(fileAdded.cid.string, fileAdded.size, capturedFileType, capturedFileName, description).send({ from: account })
-    .on('transactionHash', (hash) => {
-      setIsLoading(true);
-      setCapturedFileType(null);
-      setCapturedFileName(null);
-    })
-    .on('error', (e) =>{
-      window.alert('Something went wrong when pushing to the blockchain');
-      setIsLoading(false);  
-    })
+    dstorage.methods
+      .uploadFile(
+        fileAdded.cid.string,
+        fileAdded.size,
+        capturedFileType,
+        capturedFileName,
+        description
+      )
+      .send({ from: account })
+      .on('transactionHash', (hash) => {
+        setIsLoading(true);
+        setCapturedFileType(null);
+        setCapturedFileName(null);
+      })
+      .on('error', (e) => {
+        window.alert('Something went wrong when pushing to the blockchain');
+        setIsLoading(false);
+      });
   };
 
   const showContent = web3 && account && dstorage;
 
-  return (    <div>
-    <BrowserRouter>
-    <Routes>
-    <React.Fragment> 
-      <Route exact path="/dashboard" element={<Dashboard/>}/>
-      <Route exact path="/admin" element={<><Navbar account={account} web3={web3} networkId={networkId} setAccount={setAccount} />
-      <img src={box} className="rounded mx-auto d-block mt-3" width="120" height="120" alt="logo" />
-      {showContent && <Main files={files} captureFile={captureFile} uploadFile={uploadFile} isLoading={isLoading} />}</>
-    }/>
-    </React.Fragment>
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/login' element={<Login />} />
-    </Routes>
-    </BrowserRouter>
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <React.Fragment>
+            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route
+              exact
+              path="/admin"
+              element={
+                <>
+                  <Navbar
+                    account={account}
+                    web3={web3}
+                    networkId={networkId}
+                    setAccount={setAccount}
+                  />
+                  <img
+                    src={box}
+                    className="mx-auto mt-3 rounded d-block"
+                    width="120"
+                    height="120"
+                    alt="logo"
+                  />
+                  {showContent && (
+                    <Main
+                      files={files}
+                      captureFile={captureFile}
+                      uploadFile={uploadFile}
+                      isLoading={isLoading}
+                    />
+                  )}
+                </>
+              }
+            />
+          </React.Fragment>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
