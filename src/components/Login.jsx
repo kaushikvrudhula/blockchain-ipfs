@@ -31,19 +31,20 @@ export default function Login() {
     }
 
     return (
-        <Container className="text-color d-flex align-items-center justify-content-center flex-column"
+        <Container id="text-color"className="text-black d-flex align-items-center justify-content-center flex-column" 
             style={{ minHeight: "100vh" }}>
+                
             <Card className="signUp">
                 <Card.Body>
-                    <h2 className="text-center mb-4"><strong>Log In</strong></h2>
+                    <h2 className="text-center mb-4"><strong class="text-dark">Log In</strong></h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label><p class="text-dark">Email</p></Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label><p class="text-dark">Password</p></Form.Label>
                             <Form.Control type="password" ref={passwordRef} required />
                         </Form.Group>
                         <Button disabled={loading} className="w-100 mt-3" type="submit">

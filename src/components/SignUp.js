@@ -64,33 +64,34 @@ export default function SignUp() {
   return (
     <Container
       className="d-flex align-items-center justify-content-center flex-column "
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight:'100vh'}}
     >
       <Card className="signUp text-dark">
         <Card.Body>
-          <h2 className="mb-4 text-center text-dark">
-            <strong>Sign Up</strong>
+          <h2 className="mb-5 text-center text-dark">
+            <strong class="text-dark">Sign Up</strong>
           </h2>
           {error && <Alert variant="danger text-dark">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label><p class="text-dark">Email</p></Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
             <Form.Group id="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label><p class="text-dark">Name</p></Form.Label>
               <Form.Control type="name" ref={nameRef} required />
             </Form.Group>
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label><p class="text-dark">Password</p></Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
             <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Label><p class="text-dark">Password Confirmation</p></Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Form.Group className="mt-4 text-center">
+            <Form.Group className="mt-4 text-center text-dark">
               <Select
+                
                 placeholder="Select User Category"
                 value={userCategory.label} // set selected value
                 options={data} // set list of the data
