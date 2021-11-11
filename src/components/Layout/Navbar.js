@@ -30,7 +30,7 @@ const Navbar = (props) => {
     <nav className="navbar navbar-dark bg-primary p-0">
       <a className="navbar-brand" href="/#">
         <img src={logo} width="40" height="40" className="align-center" alt="logo" />
-        mTC DStorage
+        Secure Transfer
       </a>
       <ul className="navbar-nav px-3">
         <li className="nav-item">
@@ -46,7 +46,7 @@ const Navbar = (props) => {
           {!props.account && 
             <button 
               type="button" 
-              className="btn btn-outline-light" 
+              className="btn btn-outline-light custom" 
               onClick={connectWalletHandler} 
             > 
               Connect your wallet

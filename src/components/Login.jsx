@@ -31,7 +31,7 @@ export default function Login() {
     }
 
     return (
-        <Container className="d-flex align-items-center justify-content-center flex-column"
+        <Container className="text-color d-flex align-items-center justify-content-center flex-column"
             style={{ minHeight: "100vh" }}>
             <Card className="signUp">
                 <Card.Body>

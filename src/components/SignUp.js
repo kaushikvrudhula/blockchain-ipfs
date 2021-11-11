@@ -67,15 +67,15 @@ export default function SignUp() {
 
   return (
     <Container
-      className="d-flex align-items-center justify-content-center flex-column"
+      className="d-flex align-items-center justify-content-center flex-column "
       style={{ minHeight: '100vh' }}
     >
-      <Card className="signUp">
+      <Card className="signUp text-dark">
         <Card.Body>
-          <h2 className="mb-4 text-center">
+          <h2 className="mb-4 text-center text-dark">
             <strong>Sign Up</strong>
           </h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {error && <Alert variant="danger text-dark">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
