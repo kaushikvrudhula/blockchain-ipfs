@@ -22,7 +22,7 @@ function SuperDB() {
         rel="noopener noreferrer"
         target="_blank"
       >
-        View Paper Here{/* {.substring(0, 10)}... */}
+        View Paper Here{/* .substring(0, 10)}... */}
       </a>
     </div>
   );
