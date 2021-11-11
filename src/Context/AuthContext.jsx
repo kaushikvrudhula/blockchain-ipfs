@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
   }
 
   function printUsers() {
-    const q = query(collection(db, 'Users'), where('category', '==', 'User'));
+    const q = query(collection(db, 'Users'), where('category', '==', 'COE'));
     getDocs(q)
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

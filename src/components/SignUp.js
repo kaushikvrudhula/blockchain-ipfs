@@ -26,11 +26,15 @@ export default function SignUp() {
   const data = [
     {
       value: 1,
-      label: 'User',
+      label: 'Teacher',
     },
     {
       value: 2,
-      label: 'Admin',
+      label: 'Superintendent',
+    },
+    {
+      value: 3,
+      label: 'COE',
     },
   ];
 
