@@ -11,6 +11,7 @@ import box from './img/box.png';
 import Coe from './components/Users/CoeDB';
 import Teacher from './components/Users/TeacherDB';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SuperDB from './components/Users/SuperDB';
 
 const ipfsClient = require('ipfs-http-client');
 const ipfs = ipfsClient.create({
@@ -237,6 +238,28 @@ const App = () => {
                     alt="logo"
                   />
                   {showContent && <Coe files={files} />}
+                </>
+              }
+            />
+            <Route
+              exact
+              path="/super"
+              element={
+                <>
+                  <Navbar
+                    account={account}
+                    web3={web3}
+                    networkId={networkId}
+                    setAccount={setAccount}
+                  />
+                  <img
+                    src={box}
+                    className="mx-auto mt-3 rounded d-block"
+                    width="120"
+                    height="120"
+                    alt="logo"
+                  />
+                  {showContent && <SuperDB />}
                 </>
               }
             />

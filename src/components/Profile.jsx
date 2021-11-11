@@ -24,14 +24,14 @@ export default function Dashboard() {
     <>
       <Card>
         <Card.Body>
-          <h2 className="mb-4 text-center">Profile</h2>
+          <h2 class="mb-4 text-center text-dark">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <h5>
-            <strong>Email:</strong> {currentUser.email}
+          <h5 class="text-dark">
+            <strong class="text-dark">Email:</strong> {currentUser.email}
           </h5>
         </Card.Body>
       </Card>
-      <div className="mt-2 text-center w-100">
+      <div class="mt-2 text-center w-100 text-dark">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
