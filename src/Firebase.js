@@ -15,15 +15,9 @@ const firebaseConfig = {
   measurementId: 'G-KQFGT93DJS',
 };
 
-var admin = require('firebase-admin');
-var serviceAccount = require('path/to/serviceAccountKey.json');
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
-
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-export const auth = getAuth();
-export const db = getFirestore();
+export const auth = getAuth(app);
+export const db = getFirestore(app);

@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../Firebase';
 
-const admin = require('firebase-admin');
-const listAllUsers = () => {
-  // List batch of users, 1000 at a time.
-  admin
-    .auth()
-    .listUsers(1000)
-    .then((listUsersResult) => {
-      listUsersResult.users.forEach((userRecord) => {
-        console.log('user', userRecord.toJSON());
-      });
-    })
-    .catch((error) => {
-      console.log('Error listing users:', error);
+async function printUsers() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'Users'));
+    console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
     });
-};
-// Start listing users from the beginning, 1000 at a time.
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
-export const User = () => {
-  listAllUsers();
-  return <div>HI</div>;
-};
+export function User() {
+  useEffect(() => {
+    printUsers();
+  }, []);
+  return (
+    <div>
+      <h2>Testing users</h2>
+    </div>
+  );
+}
