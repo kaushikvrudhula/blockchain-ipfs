@@ -11,7 +11,7 @@ const Coe = props => {
     };
     
     return (
-      <div className="container-fluid text-center mt-3">
+      <div className="CoeDB container-fluid text-center mt-3">
         <div className="row justify-content-md-center">
           <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
             <div className="content">            
@@ -25,12 +25,12 @@ const Coe = props => {
                     <th scope="col" style={{ width: '120px'}}>Type</th>
                     <th scope="col" style={{ width: '90px'}}>Size</th>
                     <th scope="col" style={{ width: '90px'}}>Date</th>
-                    <th scope="col" style={{ width: '120px'}}>Uploader/view</th>
                     <th scope="col" style={{ width: '120px'}}>Hash/View/Get</th>
                   </tr>
                 </thead>
                 <Coe_FileList files={props.files} />
               </table>}
+              <div className="Send_Wrap"><button className="Send slide">Send</button></div>
             </div>
           </main>
         </div>

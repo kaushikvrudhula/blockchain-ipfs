@@ -28,7 +28,7 @@ const Teacher = props => {
                         />
                       </div>
                     <input type="file" onChange={props.captureFile} className="text-white text-monospace mt-2"/>
-                    <button type="submit" className="btn-primary btn-block col-12 mt-2"><b>UPLOAD</b></button>
+                    <button type="submit" className="slide btn-primary btn-block col-5 mt-2"><b>UPLOAD</b></button>
                   </form>
               </div>
             </div>
