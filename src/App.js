@@ -11,7 +11,6 @@ import box from './img/box.png';
 import Coe from './components/Users/CoeDB';
 import Teacher from './components/Users/TeacherDB';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { User } from './components/User';
 
 const ipfsClient = require('ipfs-http-client');
 const ipfs = ipfsClient.create({
@@ -237,9 +236,7 @@ const App = () => {
                     height="120"
                     alt="logo"
                   />
-                  {showContent && (
-                     <Coe files={files} />
-                  )}
+                  {showContent && <Coe files={files} />}
                 </>
               }
             />
@@ -247,7 +244,6 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>

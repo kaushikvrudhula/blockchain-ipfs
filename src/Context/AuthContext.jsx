@@ -6,7 +6,14 @@ import {
 } from '@firebase/auth';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../Firebase';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  setDoc,
+  getDocs,
+  where,
+  query,
+} from 'firebase/firestore';
 import { FirebaseError } from '@firebase/util';
 const AuthContext = React.createContext();
 
@@ -49,6 +56,20 @@ export function AuthProvider({ children }) {
     const res = await collection(db, 'category');
     console.log(res);
   }
+
+  function printUsers() {
+    const q = query(collection(db, 'Users'), where('category', '==', 'User'));
+    getDocs(q)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, '=>', doc.data());
+        });
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }
+
   function login(email, password) {
     console.log('Running Login');
     return signInWithEmailAndPassword(auth, email, password)
@@ -108,6 +129,7 @@ export function AuthProvider({ children }) {
     login,
     logout,
     loggedin,
+    printUsers,
     auth,
   };
 
