@@ -8,6 +8,8 @@ import Profile from './components/Profile';
 import Login from './components/Login';
 import Main from './components/Content/Main';
 import box from './img/box.png';
+import Coe from './components/Users/CoeDB';
+import Teacher from './components/Users/TeacherDB';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { User } from './components/User';
 
@@ -184,6 +186,59 @@ const App = () => {
                       uploadFile={uploadFile}
                       isLoading={isLoading}
                     />
+                  )}
+                </>
+              }
+            />
+            <Route
+              exact
+              path="/teacher"
+              element={
+                <>
+                  <Navbar
+                    account={account}
+                    web3={web3}
+                    networkId={networkId}
+                    setAccount={setAccount}
+                  />
+                  <img
+                    src={box}
+                    className="mx-auto mt-3 rounded d-block"
+                    width="120"
+                    height="120"
+                    alt="logo"
+                  />
+                  {showContent && (
+                    <Teacher
+                      files={files}
+                      captureFile={captureFile}
+                      uploadFile={uploadFile}
+                      isLoading={isLoading}
+                    />
+                  )}
+                </>
+              }
+            />
+            <Route
+              exact
+              path="/coe"
+              element={
+                <>
+                  <Navbar
+                    account={account}
+                    web3={web3}
+                    networkId={networkId}
+                    setAccount={setAccount}
+                  />
+                  <img
+                    src={box}
+                    className="mx-auto mt-3 rounded d-block"
+                    width="120"
+                    height="120"
+                    alt="logo"
+                  />
+                  {showContent && (
+                     <Coe files={files} />
                   )}
                 </>
               }

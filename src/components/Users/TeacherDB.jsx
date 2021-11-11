@@ -1,7 +1,4 @@
 import { useRef } from 'react';
-import Spinner from '../Layout/Spinner';
-
-import FileList from './FileList';
 
 const Teacher = props => {
     const fileDescription = useRef();
@@ -42,4 +39,4 @@ const Teacher = props => {
     
 }
 
-export default TeacherDB;
+export default Teacher;
