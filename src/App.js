@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Main from './components/Content/Main';
 import box from './img/box.png';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { User } from './components/User';
 
 const ipfsClient = require('ipfs-http-client');
 const ipfs = ipfsClient.create({
@@ -191,6 +192,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>
