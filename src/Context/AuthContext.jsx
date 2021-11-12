@@ -6,6 +6,8 @@ import {
 } from '@firebase/auth';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../Firebase';
+import { getAuth } from "firebase/auth";
+
 import {
   collection,
   doc,
@@ -21,11 +23,21 @@ const AuthContext = React.createContext();
 export function useAuth() {
   return useContext(AuthContext);
 }
-
+function fetchUser(){
+const auth = getAuth();
+const user = auth.currentUser;
+if (user !== null) {
+  const email = user.email;
+  // The user's ID, unique to the Firebase project. Do NOT use
+  // this value to authenticate with your backend server, if
+  // you have one. Use User.getToken() instead.
+  return email;
+}
+}
 export function AuthProvider({ children }) {
   const [currentUser, setcurrentUser] = useState('hello');
   const [loading, setloading] = useState(false);
-
+  console.log('signed in as ', currentUser);
   function signup(email, password, name, category) {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -63,7 +75,6 @@ export function AuthProvider({ children }) {
     getDocs(q)
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(doc.id, '=>', doc.data());
         });
       })
       .catch((error) => {
@@ -76,9 +87,7 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        getCategory();
-        console.log(user);
+        getRole(fetchUser());
         return true;
         // ...
       })
@@ -87,6 +96,15 @@ export function AuthProvider({ children }) {
         const errorMessage = error.message;
         throw errorMessage;
       });
+  }
+
+  async function getRole(role) {
+    const docSnap = await getDoc(doc(db, 'Users',role));
+    if (docSnap) {
+      console.log(docSnap.data());
+    } else {
+      console.log('No such document!');
+    }
   }
 
   function logout() {

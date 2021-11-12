@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import Coe_FileList from '../Content/Coe_FileList';
+import {useState } from 'react';
+import CoeFileList from '../Content/CoeFileList';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
 const Coe = (props) => {
-  const fileDescription = useRef();
   const [index, setIndex] = useState(null);
   async function uploadData() {
     try {
@@ -15,12 +14,6 @@ const Coe = (props) => {
       console.error(error.message);
     }
   }
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    props.uploadFile(fileDescription.current.value);
-  };
 
   return (
     <div className="mt-3 text-center CoeDB container-fluid">
@@ -61,7 +54,7 @@ const Coe = (props) => {
                     </th>
                   </tr>
                 </thead>
-                <Coe_FileList files={props.files} setIndex={setIndex} />
+                <CoeFileList files={props.files} setIndex={setIndex} />
               </table>
             )}
             <div className="Send_Wrap">

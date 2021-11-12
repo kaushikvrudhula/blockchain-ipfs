@@ -1,9 +1,9 @@
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { convertBytes } from '../../utils';
 
-const Coe_FileList = ({ files, setIndex }) => {
+const CoeFileList = ({ files, setIndex }) => {
   useEffect(() => {
     console.log(files);
   }, []);
@@ -43,4 +43,4 @@ const Coe_FileList = ({ files, setIndex }) => {
   });
 };
 
-export default Coe_FileList;
+export default CoeFileList;

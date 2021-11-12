@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../Context/AuthContext'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import { collection } from '@firebase/firestore'
 
 export default function Login() {
     const emailRef = useRef()
@@ -11,9 +12,9 @@ export default function Login() {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-
+    
     console.log("Login Component called");
-
+    const userRole = {teacher:"/teacher",coe:"/coe",super:"/super",};
     async function handleSubmit(e) {
         e.preventDefault()
 
