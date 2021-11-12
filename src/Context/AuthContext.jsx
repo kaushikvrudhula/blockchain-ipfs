@@ -6,7 +6,7 @@ import {
 } from '@firebase/auth';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../Firebase';
-import { getAuth } from "firebase/auth";
+import { getAuth } from 'firebase/auth';
 
 import {
   collection,
@@ -23,17 +23,14 @@ const AuthContext = React.createContext();
 export function useAuth() {
   return useContext(AuthContext);
 }
-function fetchUser(){
-const auth = getAuth();
-const user = auth.currentUser;
-if (user !== null) {
-  const email = user.email;
-  // The user's ID, unique to the Firebase project. Do NOT use
-  // this value to authenticate with your backend server, if
-  // you have one. Use User.getToken() instead.
-  return email;
-}
-}
+// function fetchUser() {
+//   const auth = getAuth();
+//   const user = auth.currentUser;
+//   if (user !== null) {
+//     const email = user.email;
+//     return email;
+//   }
+// }
 export function AuthProvider({ children }) {
   const [currentUser, setcurrentUser] = useState('hello');
   const [loading, setloading] = useState(false);
@@ -74,8 +71,7 @@ export function AuthProvider({ children }) {
     const q = query(collection(db, 'Users'), where('category', '==', 'COE'));
     getDocs(q)
       .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-        });
+        querySnapshot.forEach((doc) => {});
       })
       .catch((error) => {
         console.error(error.message);
@@ -87,7 +83,6 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        getRole(fetchUser());
         return true;
         // ...
       })
@@ -99,12 +94,8 @@ export function AuthProvider({ children }) {
   }
 
   async function getRole(role) {
-    const docSnap = await getDoc(doc(db, 'Users',role));
-    if (docSnap) {
-      console.log(docSnap.data());
-    } else {
-      console.log('No such document!');
-    }
+    const docSnap = await getDoc(doc(db, 'Users', role));
+    return docSnap.data().category;
   }
 
   function logout() {
@@ -149,6 +140,7 @@ export function AuthProvider({ children }) {
     logout,
     loggedin,
     printUsers,
+    getRole,
     auth,
   };
 
