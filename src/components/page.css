@@ -1,11 +1,10 @@
-
-*{
-  color:white;
+* {
+  color: white;
 }
 
-.custom{
+.custom {
   position: absolute;
-  left:0px;
+  left: 0px;
 }
 .fill:hover,
 .fill:focus {
@@ -15,7 +14,7 @@
 .pulse:hover,
 .pulse:focus {
   -webkit-animation: pulse 1s;
-          animation: pulse 1s;
+  animation: pulse 1s;
   box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
 }
 
@@ -54,13 +53,14 @@
 .offset {
   box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
 }
-.offset:hover, .offset:focus {
+.offset:hover,
+.offset:focus {
   box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
 }
 
 .fill {
   --color: #a972cb;
-  --hover: #cb72aa;
+  --hover: rgb(62, 161, 62);
 }
 
 .pulse {
@@ -97,7 +97,8 @@ button {
   color: var(--color);
   transition: 0.25s;
 }
-button:hover, button:focus {
+button:hover,
+button:focus {
   border-color: var(--hover);
   color: #fff;
 }
@@ -105,7 +106,7 @@ button:hover, button:focus {
 .Container {
   color: #fff;
   background: #17181c;
-  font: 300 1em "Fira Sans", sans-serif;
+  font: 300 1em 'Fira Sans', sans-serif;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -131,6 +132,25 @@ code {
   color: #e4cb58;
   font: inherit;
 }
-Body{
+Body {
   background-color: #17181c;
+}
+
+.viewlink {
+  top: 0;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a {
+  color: #ffffff;
+} /* Unvisited link  */
+a:visited {
+  color: #ffffff;
+} /* Visited link    */
+a:hover {
+  color: #ffffff;
+} /* Mouse over link */
+a:active {
+  color: #ffffff;
 }

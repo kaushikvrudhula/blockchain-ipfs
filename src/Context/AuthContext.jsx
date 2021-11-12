@@ -32,7 +32,7 @@ export function useAuth() {
 //   }
 // }
 export function AuthProvider({ children }) {
-  const [currentUser, setcurrentUser] = useState('hello');
+  const [currentUser, setcurrentUser] = useState(null);
   const [loading, setloading] = useState(false);
   console.log('signed in as ', currentUser);
   function signup(email, password, name, category) {
