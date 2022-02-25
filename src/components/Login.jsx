@@ -21,8 +21,9 @@ export default function Login() {
       await login(emailRef.current.value, passwordRef.current.value);
       const role = await getRole(emailRef.current.value);
       navigate(userRole[role]);
-    } catch {
+    } catch (err) {
       console.log('falied to login');
+      console.error(err.message);
     }
   }
 
