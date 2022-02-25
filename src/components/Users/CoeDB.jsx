@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useState } from 'react';
 import CoeFileList from '../Content/CoeFileList';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
@@ -63,6 +63,7 @@ const Coe = (props) => {
                 onClick={() => {
                   if (index || index === 0) {
                     uploadData();
+                    window.alert('File successfully uploaded');
                   } else {
                     console.log('Please select a file to send');
                   }
