@@ -9,13 +9,11 @@ const Teacher = props => {
       props.uploadFile(fileDescription.current.value);
     };
     
-    return (
-      <div className="container-fluid text-center mt-3">
-        <div className="row justify-content-md-center">
-          <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
-            <div className="content">            
-              <div className="card mb-3 mx-auto bg-secondary" style={{ maxWidth: '512px' }}>
-                <h2 className="text-white text-monospace bg-secondary"><b>Share File</b></h2>
+    return (  
+              <div className='wrap'>
+              <div className='imag_wrap'>
+              <div className='teacherContainer'>
+                <center><h4>File Upload Portal</h4></center>
                   <form onSubmit={submitHandler} >
                       <div className="form-group">                      
                         <input
@@ -27,14 +25,14 @@ const Teacher = props => {
                           required 
                         />
                       </div>
-                    <input type="file" onChange={props.captureFile} className="text-white text-monospace mt-2"/>
-                    <button type="submit" className="slide btn-primary btn-block col-5 mt-2"><b>UPLOAD</b></button>
+                    <div className='areaBorder'><h6 >Click or Drop in the Area to Upload.</h6></div><input className="dropArea" type="file" onChange={props.captureFile}/>
+                    <button type="submit" className="posButton slide btn-primary btn-block col-5 mt-2"><b>UPLOAD</b></button>
                   </form>
+                  <br></br>
+                  <div className='footer-info'><center><h6>NOTE :- Please double check the files that are being uploaded , as after approving it from metamask the file cannot be taken back.</h6></center></div>
               </div>
-            </div>
-          </main>
-        </div>
-      </div>
+              </div>
+              </div>
     );
     
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Dashboard } from './components/Dashboard';
 import web3 from './instances/connection';
 import getDStorage from './instances/contracts';
 import Navbar from './components/Layout/Navbar';
@@ -7,7 +6,6 @@ import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Login from './components/Login';
 import Main from './components/Content/Main';
-import box from './img/box.png';
 import Coe from './components/Users/CoeDB';
 import Teacher from './components/Users/TeacherDB';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -160,7 +158,6 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <React.Fragment>
-            <Route exact path="/dashboard" element={<Dashboard />} />
             <Route
               exact
               path="/admin"
@@ -171,13 +168,6 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
-                  />
-                  <img
-                    src={box}
-                    className="mx-auto mt-3 rounded d-block"
-                    width="120"
-                    height="120"
-                    alt="logo"
                   />
                   {showContent && (
                     <Main
@@ -201,13 +191,6 @@ const App = () => {
                     networkId={networkId}
                     setAccount={setAccount}
                   />
-                  <img
-                    src={box}
-                    className="mx-auto mt-3 rounded d-block"
-                    width="120"
-                    height="120"
-                    alt="logo"
-                  />
                   {showContent && (
                     <Teacher
                       files={files}
@@ -230,13 +213,6 @@ const App = () => {
                     networkId={networkId}
                     setAccount={setAccount}
                   />
-                  <img
-                    src={box}
-                    className="mx-auto mt-3 rounded d-block"
-                    width="120"
-                    height="120"
-                    alt="logo"
-                  />
                   {showContent && <Coe files={files} />}
                 </>
               }
@@ -251,13 +227,6 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
-                  />
-                  <img
-                    src={box}
-                    className="mx-auto mt-3 rounded d-block"
-                    width="120"
-                    height="120"
-                    alt="logo"
                   />
                   {showContent && <SuperDB />}
                 </>
