@@ -45,7 +45,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar navbar-dark bg-primary p-0">
-      <a className="navbar-brand" href="/#">
+      <a className="navbar-brand" href="/dashboard">
         <img
           src={logo}
           width="40"

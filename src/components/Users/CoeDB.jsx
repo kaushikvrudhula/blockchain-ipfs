@@ -2,6 +2,7 @@ import {useState } from 'react';
 import CoeFileList from '../Content/CoeFileList';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
+import { Alert } from 'bootstrap';
 
 const Coe = (props) => {
   const [index, setIndex] = useState(null);
@@ -9,7 +10,8 @@ const Coe = (props) => {
     try {
       await setDoc(doc(db, 'Files', 'paper'), {
         hash: props.files[index].fileHash,
-      });
+      }
+  );
     } catch (error) {
       console.error(error.message);
     }
