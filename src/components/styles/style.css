@@ -1,99 +1,73 @@
-
 input::-webkit-input-placeholder {
   color: bisque !important;
-  }
-   
-  input:-moz-placeholder { /* Firefox 18- */
-  color: bisque !important;  
-  }
-   
-  input::-moz-placeholder {  /* Firefox 19+ */
-  color: bisque !important;  
-  }
-   
-  input:-ms-input-placeholder {  
-  color: bisque !important;  
-  }
-.body_wrap{ 
-    
-    background-image:url('../Resources/img/nguyen-dang-hoang-nhu-qDgTQOYk6B8-unsplash.jpg');
-    background-size: 100vw 100vh;
-    filter: blur(45%);
 }
 
-.frosted-card {
-    background-color: #56BBF1;
-    overflow: hidden;
-    border-radius: 2.5%;
-    width:40rem;
-    height: 30rem;
-  }
-  
-  .frosted-card h3 {
-    font-weight: 100 !important;
-    text-shadow: 1px 0px 1px rgba(0,0,0,.15);
-    text-align: center;
-  }
-  
-  .frosted-card p {
-    font-weight:100;
-    text-shadow: 1px 0px 1px rgba(0,0,0,.15);
-    font-size: .875rem;
-    text-align: center;
-  }
-  #email{
-      padding-top:25px;
-  }
- .title{
-     color: bisque;
- }
-.teacherContainer{
-  position: relative;
-  top:10rem;
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: bisque !important;
 }
-.teacherContainer form{
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: bisque !important;
+}
+
+input:-ms-input-placeholder {
+  color: bisque !important;
+}
+.body_wrap {
+  background-image: url('../Resources/img/nguyen-dang-hoang-nhu-qDgTQOYk6B8-unsplash.jpg');
+  background-size: 100vw 100vh;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.teacherContainer {
+  position: relative;
+  top: 10rem;
+}
+.teacherContainer form {
   margin: auto;
   display: flex;
   background-color: rgba(21, 28, 32, 0.753);
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height:25rem;
-  width:40rem;
+  height: 25rem;
+  width: 40rem;
 }
-.wrap{
+.wrap {
   background-color: #58a5eb;
 }
-.imag_wrap{
-  background-image:url('../Resources/img/27123190.jpg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 90vh;
- 
+.imag_wrap {
+  background-image: url('../Resources/img/27123190.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 90vh;
 }
-.footer-info{
+.footer-info {
   position: fixed;
-  padding-left:10vh;
+  padding-left: 10vh;
   padding-top: 1.5vh;
   bottom: 0px;
   height: 5vh;
-  color:rgb(255, 255, 255);
-  width:100%;
-  background-color:#0c3f6e;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  background-color: #0c3f6e;
 }
 #fileDescription {
   background-color: rgb(20, 17, 3);
   color: bisque;
-  
+
   position: absolute;
-  top:10vh;
-  left:50%;
+  top: 10vh;
+  left: 50%;
   transform: translateX(-50%);
   width: 15rem;
 }
 
-form p{
+form p {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -101,7 +75,7 @@ form p{
   color: #ffffff;
   font-family: Arial;
 }
-.dropArea{
+.dropArea {
   position: absolute;
   margin: 3rem 0 0 0.5rem;
   padding: 3rem 0 0 10rem;
@@ -110,7 +84,7 @@ form p{
   height: 40%;
   opacity: 0;
 }
-.areaBorder{
+.areaBorder {
   position: absolute;
   margin: 3rem 0 0 0.5rem;
   padding: 3rem 0 0 10rem;
@@ -120,15 +94,15 @@ form p{
   opacity: 1;
 }
 .areaBorder h6 {
-  color:#ffffff;
+  color: #ffffff;
   position: absolute;
-  top:5rem;
+  top: 5rem;
   right: 10vh;
   word-wrap: none;
 }
 .posButton {
   position: absolute;
-  top:39vh;
+  top: 39vh;
   width: 15rem;
   background-color: rgb(223, 193, 24);
   border: greenyellow;

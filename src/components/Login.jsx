@@ -28,38 +28,49 @@ export default function Login() {
   }
 
   return (
-    <div className='body_wrap'>
-    <Container
-      id="text-color"
-      className="loginForm text-black d-flex align-items-center justify-content-center flex-column"
-      style={{ minHeight: '100vh' }}
-    >
-      <Card className="signUp frosted-card">
-        <Card.Body>
-          <h2 className="text-center mb-4">
-            <strong class="text-white">Sign in to get started</strong>
+    <div className="body_wrap">
+      <Card className="position-absolute h-50 w-25 top-50 start-50 translate-middle bg-transparent">
+        <Card.Body className="w-100 h-100 d-flex flex-column bg-black bg-opacity-25 justify-content-space-evenly">
+          <h2 className="text-center mt-2 mb-4">
+            <strong class="text-white">Sign in Portal</strong>
           </h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {<Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+          {/* {error && <Alert variant="danger">{error}</Alert>} */}
+          <Form
+            className="h-100 d-flex flex-column justify-content-space-evenly align-items-center"
+            onSubmit={handleSubmit}
+          >
+            <Form.Group id="email" className="pt-5 pb-4 w-50">
               <Form.Label>
-                <h4 className="title">Email</h4>
+                <h4 className="text-white">Email</h4>
               </Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control
+                type="email"
+                ref={emailRef}
+                className="bg-black text-white"
+                required
+              />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group id="password" className="pb-5 w-50">
               <Form.Label>
-                <h4 className="title">Password</h4>
+                <h4 className="text-white">Password</h4>
               </Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <Form.Control
+                type="password"
+                ref={passwordRef}
+                className="bg-black text-white"
+                required
+              />
             </Form.Group>
-            <Button disabled={loading} className="w-100 mt-3" type="submit">
+            <Button
+              disabled={loading}
+              className="w-25 mt-3 bg-gradient bg-light text-dark"
+              type="submit"
+            >
               Log In
             </Button>
-          </Form> }
+          </Form>
         </Card.Body>
       </Card>
-    </Container>
     </div>
   );
 }
