@@ -86,19 +86,18 @@ form p {
 }
 .areaBorder {
   position: absolute;
-  margin: 3rem 0 0 0.5rem;
-  padding: 3rem 0 0 10rem;
   width: 50vh;
   border: 1px dashed #fff;
   height: 40%;
   opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .areaBorder h6 {
   color: #ffffff;
-  position: absolute;
-  top: 5rem;
-  right: 10vh;
-  word-wrap: none;
+  text-align: center;
 }
 .posButton {
   position: absolute;

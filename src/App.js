@@ -193,6 +193,7 @@ const App = () => {
                   />
                   {showContent && (
                     <Teacher
+                      capturedFileName={capturedFileName}
                       files={files}
                       captureFile={captureFile}
                       uploadFile={uploadFile}
