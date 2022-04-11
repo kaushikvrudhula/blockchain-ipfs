@@ -18,7 +18,9 @@ const Coe = (props) => {
   }
 
   return (
-    <div className="mt-3 text-center CoeDB container-fluid">
+    <div className="bodyWrap">
+      <center><h4>Coe Selection and View Portal</h4></center>
+    <div className="mt-3 text-center CoeDB ">
       <div className="row justify-content-md-center">
         <main
           role="main"
@@ -27,9 +29,9 @@ const Coe = (props) => {
         >
           <div className="content">
             {!props.isLoading && (
-              <table className="table table-sm">
+              <table className="table table-sm table-striped table-dark table-bordered posTable">
                 <thead style={{ fontSize: '15px' }}>
-                  <tr className="text-white bg-secondary">
+                  <tr className="text-white">
                     <th scope="col" style={{ width: '10px' }}>
                       Send
                     </th>
@@ -52,7 +54,7 @@ const Coe = (props) => {
                       Date
                     </th>
                     <th scope="col" style={{ width: '120px' }}>
-                      Hash/View/Get
+                      View
                     </th>
                   </tr>
                 </thead>
@@ -61,7 +63,7 @@ const Coe = (props) => {
             )}
             <div className="Send_Wrap">
               <button
-                className="Send slide"
+                className="button-5 Send slide"
                 onClick={() => {
                   if (index || index === 0) {
                     uploadData();
@@ -76,6 +78,9 @@ const Coe = (props) => {
           </div>
         </main>
       </div>
+    </div>
+    <br/>
+    <h5>Note :- Use the view link to traverse through the content of the files. </h5>
     </div>
   );
 };

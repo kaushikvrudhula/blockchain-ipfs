@@ -34,7 +34,7 @@ const CoeFileList = ({ files, setIndex }) => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              {file.fileHash.substring(0, 10)}...
+              View
             </a>
           </td>
         </tr>
