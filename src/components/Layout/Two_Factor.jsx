@@ -1,4 +1,4 @@
-
+import firebase from './Context/firebase';
 import { getAuth, RecaptchaVerifier } from "firebase/auth";
 import { signInWithPhoneNumber } from "firebase/auth";
 
