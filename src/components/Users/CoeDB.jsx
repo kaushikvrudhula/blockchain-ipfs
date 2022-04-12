@@ -22,10 +22,10 @@ const Coe = (props) => {
         <h4>Coe Selection and View Portal</h4>
       </center>
       <div className="mt-3 text-center CoeDB ">
-        <div className="row justify-content-md-center">
+        <div className="row justify-content-md-center" style={{width:'95vw'}}>
           <main
             role="main"
-            className="ml-auto mr-auto col-lg-12"
+            className="ml-auto mr-auto col-lg-11"
             style={{ maxWidth: '1024px' }}
           >
             <div className="content">
@@ -81,7 +81,7 @@ const Coe = (props) => {
         </div>
       </div>
       <br />
-      <h5>
+      <h5 className='text-truncate'>
         Note :- Use the view link to traverse through the content of the files.{' '}
       </h5>
     </div>

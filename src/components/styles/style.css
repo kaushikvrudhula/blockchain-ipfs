@@ -98,6 +98,7 @@ form p {
 .areaBorder h6 {
   color: #ffffff;
   text-align: center;
+  
 }
 .posButton {
   position: absolute;
@@ -115,15 +116,17 @@ background-size: 100vw 100vh;
   position: relative;
   background-color: #2a2a72;
   background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-  height: 93vh;
+  height: 94.79vh;
   width: 100%;
+  display: flex; /*added*/
+  flex-direction: column; /*added*/
 }
 
 .posTable {
   position: absolute;
   top: 15rem;
   left: 20rem;
-  width: 135vh;
+  width: 65vw;
 }
 
 .Send {
@@ -181,14 +184,15 @@ background-size: 100vw 100vh;
 
 .bodyWrap h4 {
   position: relative;
-  left: 2rem;
+  padding-left: 2rem;
   top: 5rem;
 }
 
 .bodyWrap h5 {
   position: relative;
   top: 75vh;
-  left: 43rem;
+  padding-left: 40rem;
+  padding-right: 10rem;
   bottom: 0;
 }
 
