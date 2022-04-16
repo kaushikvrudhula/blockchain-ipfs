@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { collection } from '@firebase/firestore';
 
-export default function Login() {
+export default function Login({ setUser }) {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login, getRole, loggedin } = useAuth();
@@ -20,6 +20,7 @@ export default function Login() {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
       const role = await getRole(emailRef.current.value);
+      setUser({ email: emailRef.current.value, role: role });
       navigate(userRole[role]);
     } catch (err) {
       console.log('falied to login');

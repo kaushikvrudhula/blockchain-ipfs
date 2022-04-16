@@ -27,6 +27,7 @@ const App = () => {
   const [capturedFileBuffer, setCapturedFileBuffer] = useState(null);
   const [capturedFileType, setCapturedFileType] = useState(null);
   const [capturedFileName, setCapturedFileName] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Check if the user has Metamask active
@@ -168,6 +169,7 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
+                    user={user}
                   />
                   {showContent && (
                     <Main
@@ -190,6 +192,7 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
+                    user={user}
                   />
                   {showContent && (
                     <Teacher
@@ -213,6 +216,7 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
+                    user={user}
                   />
                   {showContent && <Coe files={files} />}
                 </>
@@ -228,6 +232,7 @@ const App = () => {
                     web3={web3}
                     networkId={networkId}
                     setAccount={setAccount}
+                    user={user}
                   />
                   {showContent && <SuperDB />}
                 </>
@@ -236,7 +241,7 @@ const App = () => {
           </React.Fragment>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
         </Routes>
       </BrowserRouter>
     </div>
