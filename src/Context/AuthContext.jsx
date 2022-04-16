@@ -19,7 +19,6 @@ import {
 } from 'firebase/firestore';
 import { FirebaseError } from '@firebase/util';
 const AuthContext = React.createContext();
-
 export function useAuth() {
   return useContext(AuthContext);
 }
@@ -34,6 +33,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setcurrentUser] = useState(null);
   const [loading, setloading] = useState(false);
+  const [user, setUser] = useState(null);
   console.log('signed in as ', currentUser);
   function signup(email, password, name, category) {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -95,6 +95,7 @@ export function AuthProvider({ children }) {
 
   async function getRole(role) {
     const docSnap = await getDoc(doc(db, 'Users', role));
+    setUser(docSnap.data());
     return docSnap.data().category;
   }
 
@@ -142,6 +143,7 @@ export function AuthProvider({ children }) {
     printUsers,
     getRole,
     auth,
+    user,
   };
 
   return (
