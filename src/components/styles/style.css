@@ -285,11 +285,13 @@ td {
 
 .profile {
   background: #fff;
-  padding: 20px;
+  padding: 2rem 4rem 4rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  width: 18rem;
+  background-color: rgb(26, 25, 25);
 }
 
 .profile-userpic {
@@ -304,7 +306,7 @@ td {
 
 .profile-usertitle-name {
   color: #5a7391;
-  font-size: 16px;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -312,7 +314,7 @@ td {
 .profile-usertitle-job {
   text-transform: uppercase;
   color: #5b9bd1;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -371,4 +373,9 @@ td {
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
   stroke-width: 6;
+}
+
+.pdfobject-container {
+  height: 94vh;
+  border: 1rem solid rgba(0, 0, 0, 0.1);
 }
