@@ -285,7 +285,9 @@ td {
 
 .profile {
   background: #fff;
+  position:fixed;
   padding: 2rem 4rem 4rem 4rem;
+  left:-16rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
