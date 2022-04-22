@@ -21,8 +21,10 @@ export default function Login({ setUser }) {
       await login(emailRef.current.value, passwordRef.current.value);
       const role = await getRole(emailRef.current.value);
       console.log(emailRef.current.value, role);
-      navigate(userRole[role]);
+      navigate('/verify');
+      //navigate(userRole[role]);
     } catch (err) {
+      window.alert("Failed to login, please check your credentials");
       console.log('falied to login');
       console.error(err.message);
     }

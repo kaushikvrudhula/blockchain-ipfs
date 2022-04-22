@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Main from './components/Content/Main';
 import Coe from './components/Users/CoeDB';
 import Teacher from './components/Users/TeacherDB';
+import Verify from './components/verify';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SuperDB from './components/Users/SuperDB';
 
@@ -237,6 +238,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify" element={<Verify />} />
         </Routes>
       </BrowserRouter>
     </div>

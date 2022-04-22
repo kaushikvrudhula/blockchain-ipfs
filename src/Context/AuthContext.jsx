@@ -98,6 +98,11 @@ export function AuthProvider({ children }) {
     setUser(docSnap.data());
     return docSnap.data().category;
   }
+  async function getPhone(email) {
+    const docSnap = await getDoc(doc(db, 'Users', email));
+    setUser(docSnap.data());
+    return docSnap.data().phone;
+  }
 
   function logout() {
     console.log('Running Logout');
@@ -142,6 +147,7 @@ export function AuthProvider({ children }) {
     loggedin,
     printUsers,
     getRole,
+    getPhone,
     auth,
     user,
   };
