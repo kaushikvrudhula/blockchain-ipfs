@@ -18,12 +18,13 @@ function Verify() {
         { type: "phone", feature: "otp" },
       ],
     })
-    const verify= document.getElementById("mojoauth-passwordless-phone").value;
+    // yourSelect.setAttribute( "onchange", "yourFunction()" );
+    // const verify= document.getElementById("mojoauth-passwordless-phone").value;
     mojoauth.signIn().then(async payload => {
 	    setPayload(payload)
         const phone=await getPhone(currentUser.email);
         
-        console.log(verify);
+        // console.log(verify);
       
         if(payload.authenticated===true){
              const role = await getRole(currentUser.email);
