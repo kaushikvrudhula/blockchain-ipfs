@@ -17,10 +17,10 @@ let handleCourseChange = (e) => {
 }
 
   return (
-    <div className="Dropdown text-primary">
+    <div className="Dropdown  text-primary">
     {/* Displaying the value of fruit */}
     <br />
-    { <select onChange={handleCourseChange}> 
+    { <select  className="" onChange={handleCourseChange}> 
       <option value="#"> -- Select a Course -- </option>
         
       {courses.map((course,index) => <option key={index} value={course}>{course}</option>)}
