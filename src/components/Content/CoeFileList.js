@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 
 import { convertBytes } from '../../utils';
 
-const CoeFileList = ({ files, setIndex }) => {
+const CoeFileList = ({ course ,files, setIndex }) => {
   useEffect(() => {
-    console.log(files);
+    console.log(files,course);
   }, []);
-  return files.map((file, key) => {
+  return files.filter(file=>file.fileDescription.toString() === course).map((file, key) => {
     return (
       <tbody style={{ fontSize: '16px' }} key={key}>
         <tr>
@@ -27,9 +27,8 @@ const CoeFileList = ({ files, setIndex }) => {
               <div className="inside"></div>
             </div>
           </td>
-          <td className="col-1">{file.fileId}</td>
-          <td className="col-5">{file.fileName}</td>
           <td className="col-1">{file.fileDescription}</td>
+          <td className="col-5">{file.fileName}</td>
           <td className="col-1" style={{ maxWidth: '150px' }}>
             <div data-title={file.fileType}>
               <div className="text-truncate">{file.fileType}</div>

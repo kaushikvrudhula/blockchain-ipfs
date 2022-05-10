@@ -24,9 +24,11 @@ const Coe = (props) => {
       <center>
         <h4>Coe Selection and View Portal</h4>
       </center>
+      <div className="dropPos">
       <Dropdown setCourse={setCourse}/>
-        {course === "#" ? <div>please select a course</div> :
+      </div>
       <div className="mt-3 text-center CoeDB ">
+        {course === "#" ? <div className='justify-content-md-center'><h1>please select a course</h1></div> :
         <div className="row justify-content-md-center" style={{width:'95vw'}}>
           <main
             role="main"
@@ -41,14 +43,11 @@ const Coe = (props) => {
                       <th scope="col" style={{ width: '10px' }}>
                         Send
                       </th>
-                      <th scope="col" style={{ width: '10px' }}>
-                        Id
-                      </th>
-                      <th scope="col" style={{ width: '200px' }}>
-                        Name
-                      </th>
                       <th scope="col" style={{ width: '230px' }}>
                         Description
+                      </th>
+                      <th scope="col" style={{ width: '200px' }}>
+                        File Name
                       </th>
                       <th scope="col" style={{ width: '120px' }}>
                         Type
@@ -64,10 +63,10 @@ const Coe = (props) => {
                       </th>
                     </tr>
                   </thead>
-                  <CoeFileList files={props.files} setIndex={setIndex} />
+                  <CoeFileList course={course} files={props.files} setIndex={setIndex} />
                 </table>
               )}
-              <div className="Send_Wrap">
+              
                 <button
                   className="button-5 Send slide"
                   onClick={() => {
@@ -80,16 +79,13 @@ const Coe = (props) => {
                 >
                   Send
                 </button>
-              </div>
+            
             </div>
           </main>
         </div>
-      </div>
 }
-      <br />
-      <h5 className='text-truncate'>
-        Note :- Use the view link to traverse through the content of the files.{' '}
-      </h5>
+</div>
+     
     </div>
   );
 };
