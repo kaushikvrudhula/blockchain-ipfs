@@ -3,8 +3,11 @@ import CoeFileList from '../Content/CoeFileList';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 import { Alert } from 'bootstrap';
+import Dropdown from '../Content/Dropdown';
+import { useAuth } from '../../Context/AuthContext';
 
 const Coe = (props) => {
+  let [course, setCourse] = useState("#");
   const [index, setIndex] = useState(null);
   async function uploadData() {
     try {
@@ -21,6 +24,8 @@ const Coe = (props) => {
       <center>
         <h4>Coe Selection and View Portal</h4>
       </center>
+      <Dropdown setCourse={setCourse}/>
+        {course === "#" ? <div>please select a course</div> :
       <div className="mt-3 text-center CoeDB ">
         <div className="row justify-content-md-center" style={{width:'95vw'}}>
           <main
@@ -80,6 +85,7 @@ const Coe = (props) => {
           </main>
         </div>
       </div>
+}
       <br />
       <h5 className='text-truncate'>
         Note :- Use the view link to traverse through the content of the files.{' '}

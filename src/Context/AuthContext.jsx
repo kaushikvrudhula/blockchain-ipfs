@@ -92,6 +92,10 @@ export function AuthProvider({ children }) {
         throw errorMessage;
       });
   }
+  async function getCourse(year) {
+    const docSnap = await getDoc(doc(db, 'Subjects', year));
+    return docSnap.data().Coursecode;
+  }
 
   async function getRole(role) {
     const docSnap = await getDoc(doc(db, 'Users', role));
@@ -148,6 +152,7 @@ export function AuthProvider({ children }) {
     printUsers,
     getRole,
     getPhone,
+    getCourse,
     auth,
     user,
   };

@@ -18,7 +18,6 @@ function Verify() {
         { type: "phone", feature: "otp" },
       ],
     })
-    // yourSelect.setAttribute( "onchange", "yourFunction()" );
     // const verify= document.getElementById("mojoauth-passwordless-phone").value;
     mojoauth.signIn().then(async payload => {
 	    setPayload(payload)
