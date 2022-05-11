@@ -7,12 +7,13 @@ import Dropdown from '../Content/Dropdown';
 import { useAuth } from '../../Context/AuthContext';
 
 const Coe = (props) => {
-  let [course, setCourse] = useState("#");
+  let [course, setCourse] = useState('#');
   const [index, setIndex] = useState(null);
   async function uploadData() {
     try {
+      let arr = props.files.filter((file) => file.fileDescription === course);
       await setDoc(doc(db, 'Files', 'paper'), {
-        hash: props.files[index].fileHash,
+        hash: arr[index].fileHash,
       });
     } catch (error) {
       console.error(error.message);
@@ -25,48 +26,59 @@ const Coe = (props) => {
         <h4>Coe Selection and View Portal</h4>
       </center>
       <div className="dropPos">
-      <Dropdown setCourse={setCourse}/>
+        <Dropdown setCourse={setCourse} />
       </div>
       <div className="mt-3 text-center CoeDB ">
-        {course === "#" ? <div className='courseName justify-content-md-center'><h4>please select a course</h4></div> :
-        <div className="row justify-content-md-center" style={{width:'95vw'}}>
-          <main
-            role="main"
-            className="ml-auto mr-auto col-lg-11"
-            style={{ maxWidth: '1024px' }}
+        {course === '#' ? (
+          <div className="courseName justify-content-md-center">
+            <h4>please select a course</h4>
+          </div>
+        ) : (
+          <div
+            className="row justify-content-md-center"
+            style={{ width: '95vw' }}
           >
-            <div className="content">
-              {!props.isLoading && (
-                <table className="table table-sm table-striped table-dark table-bordered posTable">
-                  <thead style={{ fontSize: '15px' }}>
-                    <tr className="text-white">
-                      <th scope="col" style={{ width: '10px' }}>
-                        Send
-                      </th>
-                      <th scope="col" style={{ width: '230px' }}>
-                        Description
-                      </th>
-                      <th scope="col" style={{ width: '200px' }}>
-                        File Name
-                      </th>
-                      <th scope="col" style={{ width: '120px' }}>
-                        Type
-                      </th>
-                      <th scope="col" style={{ width: '90px' }}>
-                        Size
-                      </th>
-                      <th scope="col" style={{ width: '90px' }}>
-                        Date
-                      </th>
-                      <th scope="col" style={{ width: '120px' }}>
-                        View
-                      </th>
-                    </tr>
-                  </thead>
-                  <CoeFileList course={course} files={props.files} setIndex={setIndex} />
-                </table>
-              )}
-              
+            <main
+              role="main"
+              className="ml-auto mr-auto col-lg-11"
+              style={{ maxWidth: '1024px' }}
+            >
+              <div className="content">
+                {!props.isLoading && (
+                  <table className="table table-sm table-striped table-dark table-bordered posTable">
+                    <thead style={{ fontSize: '15px' }}>
+                      <tr className="text-white">
+                        <th scope="col" style={{ width: '10px' }}>
+                          Send
+                        </th>
+                        <th scope="col" style={{ width: '230px' }}>
+                          Description
+                        </th>
+                        <th scope="col" style={{ width: '200px' }}>
+                          File Name
+                        </th>
+                        <th scope="col" style={{ width: '120px' }}>
+                          Type
+                        </th>
+                        <th scope="col" style={{ width: '90px' }}>
+                          Size
+                        </th>
+                        <th scope="col" style={{ width: '90px' }}>
+                          Date
+                        </th>
+                        <th scope="col" style={{ width: '120px' }}>
+                          View
+                        </th>
+                      </tr>
+                    </thead>
+                    <CoeFileList
+                      course={course}
+                      files={props.files}
+                      setIndex={setIndex}
+                    />
+                  </table>
+                )}
+
                 <button
                   className="button-5 Send slide"
                   onClick={() => {
@@ -79,13 +91,11 @@ const Coe = (props) => {
                 >
                   Send
                 </button>
-            
-            </div>
-          </main>
-        </div>
-}
-</div>
-     
+              </div>
+            </main>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
