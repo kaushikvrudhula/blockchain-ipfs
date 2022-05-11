@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
-import { Button } from 'react-bootstrap';
 import pdfobject from 'pdfobject';
 
 function SuperDB() {

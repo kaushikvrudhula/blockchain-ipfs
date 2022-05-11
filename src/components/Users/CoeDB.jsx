@@ -2,9 +2,7 @@ import { useState } from 'react';
 import CoeFileList from '../Content/CoeFileList';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
-import { Alert } from 'bootstrap';
 import Dropdown from '../Content/Dropdown';
-import { useAuth } from '../../Context/AuthContext';
 
 const Coe = (props) => {
   let [course, setCourse] = useState('#');
@@ -15,6 +13,7 @@ const Coe = (props) => {
       await setDoc(doc(db, 'Files', 'paper'), {
         hash: arr[index].fileHash,
       });
+      window.alert('File sent successfully');
     } catch (error) {
       console.error(error.message);
     }

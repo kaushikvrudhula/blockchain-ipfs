@@ -1,12 +1,7 @@
 import moment from 'moment';
-import { useEffect } from 'react';
-
 import { convertBytes } from '../../utils';
 
 const CoeFileList = ({ course, files, setIndex }) => {
-  useEffect(() => {
-    console.log(files, course);
-  }, []);
   return files
     .filter((file) => file.fileDescription.toString() === course)
     .map((file, key) => {

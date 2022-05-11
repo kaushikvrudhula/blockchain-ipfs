@@ -1,46 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Button, Fade, OverlayTrigger, Popover } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
-import { Transition } from 'react-transition-group';
 import { useAuth } from '../../Context/AuthContext';
 import logo from '../../img/logo.png';
-import menu from '../Resources/img/menu.png';
 import userLogo from '../Resources/img/user-logo.svg';
 
 const Navbar = (props) => {
   const [error, setError] = useState('');
-  const { currentUser, logout, printUsers, getRole, user } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
-  const duration = 500;
-
-  const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 0,
-  };
-
-  const transitionStyles = {
-    entering: { opacity: 0.5 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0.5 },
-    exited: { opacity: 0 },
-  };
-
-  const Fade = ({ in: inProp }) => (
-    <Transition in={inProp} timeout={duration}>
-      {(state) => (
-        <div
-          style={{
-            ...defaultStyle,
-            ...transitionStyles[state],
-          }}
-        >
-          This is Fade Transition sample code!
-        </div>
-      )}
-    </Transition>
-  );
   const setStyle = () => {
     setOpen(!open);
   };

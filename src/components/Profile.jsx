@@ -19,7 +19,7 @@ export default function Dashboard() {
   }
   useEffect(() => {
     printUsers();
-  }, []);
+  });
   return (
     <>
       <Card>

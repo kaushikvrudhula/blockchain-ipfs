@@ -6,7 +6,6 @@ import {
 } from '@firebase/auth';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../Firebase';
-import { getAuth } from 'firebase/auth';
 
 import {
   collection,
@@ -17,19 +16,13 @@ import {
   where,
   query,
 } from 'firebase/firestore';
-import { FirebaseError } from '@firebase/util';
+
 const AuthContext = React.createContext();
+
 export function useAuth() {
   return useContext(AuthContext);
 }
-// function fetchUser() {
-//   const auth = getAuth();
-//   const user = auth.currentUser;
-//   if (user !== null) {
-//     const email = user.email;
-//     return email;
-//   }
-// }
+
 export function AuthProvider({ children }) {
   const [currentUser, setcurrentUser] = useState(null);
   const [loading, setloading] = useState(false);
@@ -61,10 +54,6 @@ export function AuthProvider({ children }) {
       userName: name,
       category: category,
     });
-  }
-  async function getCategory() {
-    const res = await collection(db, 'category');
-    console.log(res);
   }
 
   function printUsers() {

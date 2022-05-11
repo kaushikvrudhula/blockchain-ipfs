@@ -1,18 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Form, Button, Card, Alert, Container } from 'react-bootstrap';
+import React, { useRef, useState } from 'react';
+import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
-import { collection } from '@firebase/firestore';
 
 export default function Login({ setUser }) {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, getRole, loggedin } = useAuth();
-  const [error, setError] = useState('');
+  const { login, getRole } = useAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const userRole = { Teacher: '/teacher', COE: '/coe', Super: '/super' };
+
   console.log('Login Component called');
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,9 +19,8 @@ export default function Login({ setUser }) {
       const role = await getRole(emailRef.current.value);
       console.log(emailRef.current.value, role);
       navigate('/verify');
-      //navigate(userRole[role]);
     } catch (err) {
-      window.alert("Failed to login, please check your credentials");
+      window.alert('Failed to login, please check your credentials');
       console.log('falied to login');
       console.error(err.message);
       window.location.reload();
