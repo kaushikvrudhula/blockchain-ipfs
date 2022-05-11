@@ -28,7 +28,7 @@ const Coe = (props) => {
       <Dropdown setCourse={setCourse}/>
       </div>
       <div className="mt-3 text-center CoeDB ">
-        {course === "#" ? <div className='justify-content-md-center'><h1>please select a course</h1></div> :
+        {course === "#" ? <div className='courseName justify-content-md-center'><h4>please select a course</h4></div> :
         <div className="row justify-content-md-center" style={{width:'95vw'}}>
           <main
             role="main"

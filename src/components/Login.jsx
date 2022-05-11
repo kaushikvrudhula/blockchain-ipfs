@@ -27,6 +27,7 @@ export default function Login({ setUser }) {
       window.alert("Failed to login, please check your credentials");
       console.log('falied to login');
       console.error(err.message);
+      window.location.reload();
     }
   }
 
