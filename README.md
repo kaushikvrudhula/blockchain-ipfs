@@ -1,6 +1,6 @@
 `#Ethereum`
 
-# mTC DStorage
+# Paper Transfer Dapp
 
 This is a Decentralized Storage which allows the end user to upload a file to the IPFS system and record its ownership into the blockchain.
 
